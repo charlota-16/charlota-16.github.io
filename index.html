@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            padding: 30px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.8em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #fff, #a8c0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        h2 {
+            color: #fff;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            background: linear-gradient(to right, #a8c0ff, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        .study-box {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            position: relative;
+            overflow: hidden;
+        }
+        .study-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.1));
+            z-index: -1;
+            border-radius: 22px;
+            animation: borderGlow 3s linear infinite;
+        }
+        .study-box strong {
+            font-size: 1.2em;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .example-box {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 20px;
+            font-size: 1em;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            position: relative;
+            overflow: hidden;
+        }
+        .example-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.1));
+            z-index: -1;
+            border-radius: 22px;
+            animation: borderGlow 3s linear infinite;
+        }
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3px 8px;
+            border-radius: 5px;
+            color: #a8c0ff;
+            font-family: sans-serif;
+        }
+        ul, ol {
+            margin: 10px 0 20px;
+            padding-left: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        ul li, ol li {
+            margin-bottom: 10px;
+        }
+        .section {
+            position: relative;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+        }
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.1));
+            z-index: -1;
+            border-radius: 22px;
+            animation: borderGlow 3s linear infinite;
+        }
+        @keyframes borderGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .form-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fff;
+            font-size: 1.1em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1em;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        select:hover, input:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        select:focus, input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        button {
+            background: linear-gradient(45deg, #2c3e50, #3498db, #2c3e50);
+            background-size: 200% auto;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            transition: 0.5s;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+        button:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .back-button {
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 1em;
+            transition: 0.3s;
+            width: auto;
+        }
+        .back-button:hover {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            transform: translateY(-2px);
+        }
+        #calculatorSection {
+            display: none;
+        }
+        #learningSection {
+            display: block;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .formula-section {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .formula {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.2em;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LEARN AND CALCULATE</h1>
+        
+   <div class="container">
+        <h1>Differential Equations Learning Hub</h1>
+
+        <!-- Learning Section -->
+        <div class="section">
+            <h2>Understanding Growth and Decay</h2>
+            <p>
+                Growth and decay describe how quantities increase or decrease over time. These concepts are used in fields like 
+                biology, economics, and physics to model real-world phenomena such as population growth, radioactive decay, 
+                or even the growth of investments.
+            </p>
+            
+            <div class="study-box">
+                <strong>General Formula:</strong>
+                <br> <code>P(t) = P₀ * e^(kt)</code>
+                <ul>
+                    <li><strong>P(t):</strong> The quantity at time t</li>
+                    <li><strong>P₀:</strong> The initial quantity</li>
+                    <li><strong>k:</strong> Growth rate (k > 0) or decay rate (k < 0)</li>
+                    <li><strong>t:</strong> Time</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <strong>Example:</strong>
+                A bacteria culture starts with 100 bacteria and doubles every 2 hours. How many bacteria will there be after 6 hours?
+                <ol>
+                    <li>Using <code>P(t) = P₀ * e^(kt)</code></li>
+                    <li>Where:
+                        <ul>
+                            <li><code>P₀ = 100</code></li>
+                            <li><code>k = ln(2)/2</code></li>
+                            <li><code>t = 6</code></li>
+                        </ul>
+                    </li>
+                    <li>Result: <code>800</code> bacteria</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Newton's Law of Cooling</h2>
+            <p>
+                Newton's Law of Cooling states that the rate at which an object cools is proportional to the difference 
+                between its temperature and the ambient temperature.
+            </p>
+            
+            <div class="study-box">
+                <strong>Formula:</strong>
+                <br> <code>T(t) = Tₐ + (T₀ - Tₐ) * e^(-kt)</code>
+                <ul>
+                    <li><strong>T(t):</strong> Temperature at time t</li>
+                    <li><strong>Tₐ:</strong> Ambient temperature</li>
+                    <li><strong>T₀:</strong> Initial temperature</li>
+                    <li><strong>k:</strong> Cooling constant</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong>  
+                A cup of coffee cools from 90°C to 60°C in 10 minutes in a room with an ambient temperature of 20°C. What will the coffee's temperature be after 20 minutes?  
+                <br><br>
+                <strong>Step-by-step Calculation:</strong>
+                <ol>
+                    <li>Using the formula: <code>T(t) = Tₐ + (T₀ - Tₐ) * e^(-kt)</code></li>
+                    <li>Here:
+                        <ul>
+                            <li><code>Tₐ = 20</code> (ambient temperature)</li>
+                            <li><code>T₀ = 90</code> (initial temperature)</li>
+                            <li>Find <code>k</code> using the first 10 minutes:
+                                <code>60 = 20 + (90 - 20) * e^(-10k)</code>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Solve for <code>k</code>:
+                        <ul>
+                            <li><code>40 = 70 * e^(-10k)</code></li>
+                            <li><code>e^(-10k) = 40 / 70 ≈ 0.571</code></li>
+                            <li><code>-10k = ln(0.571) ≈ -0.56</code></li>
+                            <li><code>k ≈ 0.056</code></li>
+                        </ul>
+                    </li>
+                    <li>After 20 minutes:
+                        <ul>
+                            <li><code>T(20) = 20 + (90 - 20) * e^(-0.056 * 20)</code></li>
+                            <li><code>e^(-1.12) ≈ 0.326</code></li>
+                            <li><code>T(20) = 20 + 70 * 0.326 ≈ 42.8°C</code></li>
+                        </ul>
+                    </li>
+                </ol>
+                <p><strong>Answer:</strong> The coffee's temperature after 20 minutes will be approximately <code>42.8°C</code>.</p>
+            </div>
+        </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Learning Hub. All rights reserved.</p>
+    </div>
+</body>
+</html>
+
+
+        </div>
+        <div class="form-section">
+            <div class="input-group">
+                <label for="equation">Select Equation Type:</label>
+                <select id="equation">
+                    <option value="none">--Select--</option>
+                    <option value="exponential">Exponential Growth/Decay</option>
+                    <option value="cooling">Newton's Law of Cooling/Heating</option>
+                </select>
+            </div>
+
+            <div id="exponentialSubtype" class="subtype-selector" style="display:none;">
+                <label for="expType">What do you want to find?</label>
+                <select id="expType">
+                    <option value="amount">Final Amount</option>
+                    <option value="initial">Initial Amount (x₀)</option>
+                    <option value="rate">Growth/Decay Rate (k)</option>
+                    <option value="time">Time (t)</option>
+                </select>
+            </div>
+
+            <div id="formulaDisplay" class="formula-section" style="display:none;">
+                <h3 style="text-align: center; margin-bottom: 15px;">Formula:</h3>
+                <div id="formulaContent" class="formula"></div>
+            </div>
+
+            <div id="inputs" style="display:none;">
+                <div id="tempUnitContainer" style="display:none;">
+                    <div class="input-group">
+                        <label for="tempUnit">Temperature Unit:</label>
+                        <select id="tempUnit">
+                            <option value="F">Fahrenheit (°F)</option>
+                            <option value="C">Celsius (°C)</option>
+                            <option value="K">Kelvin (K)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="dynamicInputs"></div>
+
+                <button onclick="solve()">Calculate</button>
+            </div>
+        </div>
+
+        <div id="result" style="display:none;"></div>
+
+        <div class="last-result" id="lastResult" style="display:none;">
+            <div>Final Answer: <span id="lastResultValue"></span></div>
+        </div>
+        
+
+        <div class="footer">
+            <p>Niño Charles Jayme</p>
+            <p>EMATH 213</p>
+            <p>Instructor: Engr. Ramel Sigue</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize form
+        window.onload = function() {
+            document.getElementById('inputs').style.display = 'none';
+            document.getElementById('tempUnitContainer').style.display = 'none';
+            document.getElementById('formulaDisplay').style.display = 'none';
+            document.getElementById('exponentialSubtype').style.display = 'none';
+        };
+    
+        // Event listener for equation selection
+        document.getElementById('equation').addEventListener('change', function() {
+            const equationType = this.value;
+            const inputs = document.getElementById('inputs');
+            const tempUnitContainer = document.getElementById('tempUnitContainer');
+            const formulaDisplay = document.getElementById('formulaDisplay');
+            const formulaContent = document.getElementById('formulaContent');
+            const exponentialSubtype = document.getElementById('exponentialSubtype');
+            
+            if (equationType === 'none') {
+                inputs.style.display = 'none';
+                formulaDisplay.style.display = 'none';
+                exponentialSubtype.style.display = 'none';
+                return;
+            }
+    
+            inputs.style.display = 'block';
+            formulaDisplay.style.display = 'block';
+            tempUnitContainer.style.display = equationType === 'cooling' ? 'block' : 'none';
+            exponentialSubtype.style.display = equationType === 'exponential' ? 'block' : 'none';
+    
+            // Update formula display
+            if (equationType === 'exponential') {
+                formulaContent.innerHTML = `
+                    dx/dt = kx<br>
+                    x(t) = x₀e^(kt)<br>
+                    where:<br>
+                    x₀ = initial amount<br>
+                    k = growth rate (k > 0) or decay rate (k < 0)<br>
+                    t = time
+                `;
+                updateInputs(); // Update inputs based on selected subtype
+            } else if (equationType === 'cooling') {
+                formulaContent.innerHTML = `
+                    dT/dt = -k(T - Tₘ)<br>
+                    T(t) = Tₘ + (T₀ - Tₘ)e^(-kt)<br>
+                    where:<br>
+                    T₀ = initial temperature<br>
+                    Tₘ = ambient temperature<br>
+                    k = cooling constant<br>
+                    t = time
+                `;
+                updateInputs();
+            }
+        });
+    
+        // Event listener for exponential subtype selection
+        document.getElementById('expType').addEventListener('change', updateInputs);
+    
+        // Update dynamic input fields
+        function updateInputs() {
+            const equationType = document.getElementById('equation').value;
+            const dynamicInputsDiv = document.getElementById('dynamicInputs');
+            dynamicInputsDiv.innerHTML = '';
+    
+            if (equationType === 'exponential') {
+                const expType = document.getElementById('expType').value;
+                let inputs = '';
+    
+                switch(expType) {
+                    case 'amount':
+                        inputs = `
+                            <div class="input-group">
+                                <label for="initialAmount">Initial Amount (x₀):</label>
+                                <input type="number" step="any" id="initialAmount" placeholder="Enter initial amount" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="growthRate">Growth/Decay Rate (k):</label>
+                                <input type="number" step="any" id="growthRate" placeholder="Enter rate" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="time">Time (t):</label>
+                                <input type="number" step="any" id="time" placeholder="Enter time" required>
+                            </div>`;
+                        break;
+                    case 'initial':
+                        inputs = `
+                            <div class="input-group">
+                                <label for="finalAmount">Final Amount (x):</label>
+                                <input type="number" step="any" id="finalAmount" placeholder="Enter final amount" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="growthRate">Growth/Decay Rate (k):</label>
+                                <input type="number" step="any" id="growthRate" placeholder="Enter rate" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="time">Time (t):</label>
+                                <input type="number" step="any" id="time" placeholder="Enter time" required>
+                            </div>`;
+                        break;
+                    case 'rate':
+                        inputs = `
+                            <div class="input-group">
+                                <label for="initialAmount">Initial Amount (x₀):</label>
+                                <input type="number" step="any" id="initialAmount" placeholder="Enter initial amount" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="finalAmount">Final Amount (x):</label>
+                                <input type="number" step="any" id="finalAmount" placeholder="Enter final amount" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="time">Time (t):</label>
+                                <input type="number" step="any" id="time" placeholder="Enter time" required>
+                            </div>`;
+                        break;
+                    case 'time':
+                        inputs = `
+                            <div class="input-group">
+                                <label for="initialAmount">Initial Amount (x₀):</label>
+                                <input type="number" step="any" id="initialAmount" placeholder="Enter initial amount" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="finalAmount">Final Amount (x):</label>
+                                <input type="number" step="any" id="finalAmount" placeholder="Enter final amount" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="growthRate">Growth/Decay Rate (k):</label>
+                                <input type="number" step="any" id="growthRate" placeholder="Enter rate" required>
+                            </div>`;
+                        break;
+                }
+                dynamicInputsDiv.innerHTML = inputs;
+            } else if (equationType === 'cooling') {
+                dynamicInputsDiv.innerHTML = `
+                    <div class="input-group">
+                        <label for="initialTemp">Initial Temperature (T₀):</label>
+                        <input type="number" step="any" id="initialTemp" placeholder="Enter initial temperature" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="ambientTemp">Room Temperature (Tₘ):</label>
+                        <input type="number" step="any" id="ambientTemp" placeholder="Enter room temperature" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="temp1">Temperature at time t₁:</label>
+                        <input type="number" step="any" id="temp1" placeholder="Enter temperature at t₁" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="time1">Time t₁:</label>
+                        <input type="number" step="any" id="time1" placeholder="Enter t₁" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="timeCooling">Target time t:</label>
+                        <input type="number" step="any" id="timeCooling" placeholder="Enter target time" required>
+                    </div>`;
+            }
+        }
+    
+        // Display solution function
+        function displaySolution(steps, finalAnswer, unit = '') {
+            const resultDiv = document.getElementById('result');
+            const lastResultDiv = document.getElementById('lastResult');
+            const lastResultValue = document.getElementById('lastResultValue');
+    
+            resultDiv.innerHTML = steps;
+            resultDiv.style.display = 'block';
+            
+            if (finalAnswer !== undefined) {
+                lastResultDiv.style.display = 'block';
+                lastResultValue.textContent = `${finalAnswer}${unit ? ' ' + unit : ''}`;
+            } else {
+                lastResultDiv.style.display = 'none';
+            }
+        }
+    
+        // Main solve function
+        function solve() {
+            const equation = document.getElementById('equation').value;
+            
+            if (equation === 'exponential') {
+                calculateExponential();
+            } else if (equation === 'cooling') {
+                calculateCooling();
+            }
+        }
+    
+        // Calculate exponential growth/decay
+        function calculateExponential() {
+            const expType = document.getElementById('expType').value;
+            let steps, result;
+    
+            switch(expType) {
+                case 'amount':
+                    const x0 = parseFloat(document.getElementById('initialAmount').value);
+                    const k = parseFloat(document.getElementById('growthRate').value);
+                    const t = parseFloat(document.getElementById('time').value);
+    
+                    if ([x0, k, t].some(isNaN)) {
+                        alert("Please fill in all fields with valid numbers.");
+                        return;
+                    }
+    
+                    result = x0 * Math.exp(k * t);
+                    steps = `
+    Solution Steps:
+    
+    1. Using exponential growth/decay formula:<br>
+       x = x₀e^(kt)<br>
+       x = ${x0} × e^(${k} × ${t})<br>
+       x = ${x0} × e^(${(k * t).toFixed(6)})<br>
+       x = ${result.toFixed(4)}<br>
+    
+    2. Therefore, at time ${t}, the amount will be ${result.toFixed(4)}.<br>
+    `;
+                    break;
+    
+                case 'initial':
+                    const xFinal = parseFloat(document.getElementById('finalAmount').value);
+                    const kForInitial = parseFloat(document.getElementById('growthRate').value);
+                    const tForInitial = parseFloat(document.getElementById('time').value);
+    
+                    if ([xFinal, kForInitial, tForInitial].some(isNaN)) {
+                        alert("Please fill in all fields with valid numbers.");
+                        return;
+                    }
+    
+                    result = xFinal / Math.exp(kForInitial * tForInitial);
+                    steps = `
+    Solution Steps:
+    
+    1. Using exponential growth/decay formula and solving for x₀:<br>
+       x = x₀e^(kt)<br>
+       x₀ = x/e^(kt)<br>
+       x₀ = ${xFinal}/e^(${kForInitial} × ${tForInitial})<br>
+       x₀ = ${xFinal}/e^(${(kForInitial * tForInitial).toFixed(6)})<br>
+       x₀ = ${result.toFixed(4)}<br>
+    
+    2. Therefore, the initial amount was ${result.toFixed(4)}.<br>
+    `;
+                    break;
+    
+                case 'rate':
+                    const x0ForRate = parseFloat(document.getElementById('initialAmount').value);
+                    const xForRate = parseFloat(document.getElementById('finalAmount').value);
+                    const tForRate = parseFloat(document.getElementById('time').value);
+    
+                    if ([x0ForRate, xForRate, tForRate].some(isNaN)) {
+                        alert("Please fill in all fields with valid numbers.");
+                        return;
+                    }
+    
+                    result = Math.log(xForRate/x0ForRate) / tForRate;
+                    steps = `
+    Solution Steps:
+    
+    1. Using exponential growth/decay formula and solving for k:<br>
+       x = x₀e^(kt)<br>
+       x/x₀ = e^(kt)<br>
+       ln(x/x₀) = kt<br>
+       k = ln(x/x₀)/t<br>
+       k = ln(${xForRate}/${x0ForRate})/${tForRate}<br>
+       k = ln(${(xForRate/x0ForRate).toFixed(6)})/${tForRate}<br>
+       k = ${result.toFixed(6)}<br>
+    
+    2. Therefore, the ${result > 0 ? 'growth' : 'decay'} rate is ${Math.abs(result).toFixed(6)}.<br>
+    `;
+                    break;
+    
+                case 'time':
+                    const x0ForTime = parseFloat(document.getElementById('initialAmount').value);
+                    const xForTime = parseFloat(document.getElementById('finalAmount').value);
+                    const kForTime = parseFloat(document.getElementById('growthRate').value);
+    
+                    if ([x0ForTime, xForTime, kForTime].some(isNaN)) {
+                        alert("Please fill in all fields with valid numbers.");
+                        return;
+                    }
+    
+                    result = Math.log(xForTime/x0ForTime) / kForTime;
+                    steps = `
+    Solution Steps:
+    
+    1. Using exponential growth/decay formula and solving for t:<br>
+       x = x₀e^(kt)<br>
+       x/x₀ = e^(kt)<br>
+       ln(x/x₀) = kt<br>
+       t = ln(x/x₀)/k<br>
+       t = ln(${xForTime}/${x0ForTime})/${kForTime}<br>
+       t = ln(${(xForTime/x0ForTime).toFixed(6)})/${kForTime}<br>
+       t = ${result.toFixed(4)}<br>
+    
+    2. Therefore, the required time is ${result.toFixed(4)}.<br>
+    `;
+                    break;
+            }
+    
+            displaySolution(steps, result.toFixed(4));
+        }
+    
+        // Calculate cooling/heating
+        function calculateCooling() {
+            const T0 = parseFloat(document.getElementById('initialTemp').value);
+            const Tm = parseFloat(document.getElementById('ambientTemp').value);
+            const T1 = parseFloat(document.getElementById('temp1').value);
+            const t1 = parseFloat(document.getElementById('time1').value);
+            const t = parseFloat(document.getElementById('timeCooling').value);
+    
+            if ([T0, Tm, T1, t1, t].some(isNaN)) {
+                alert("Please fill in all fields with valid numbers.");
+                return;
+            }
+    
+            const k = -Math.log((T1 - Tm) / (T0 - Tm)) / t1;
+            const finalTemp = Tm + (T0 - Tm) * Math.exp(-k * t);
+    
+            const steps = `
+    Solution Steps:
+    
+    1. Calculate cooling constant k using:<br>
+       k = -ln((T₁ - Tₘ)/(T₀ - Tₘ)) / t₁<br>
+       k = -ln((${T1} - ${Tm})/(${T0} - ${Tm})) / ${t1}<br>
+       k = -ln(${((T1 - Tm) / (T0 - Tm)).toFixed(6)}) / ${t1}<br>
+       k = ${k.toFixed(6)}<br>
+    
+    2. Using Newton's Law of Cooling formula:<br>
+       T = Tₘ + (T₀ - Tₘ)e^(-kt)<br>
+       T = ${Tm} + (${T0} - ${Tm})e^(-${k.toFixed(6)} × ${t})<br>
+       T = ${Tm} + ${(T0 - Tm).toFixed(2)} × e^(${(-k * t).toFixed(6)})<br>
+       T = ${finalTemp.toFixed(2)}<br>
+    
+    3. Therefore, at time ${t}, the temperature will be ${finalTemp.toFixed(2)}°C.<br>
+    `;
+    
+            displaySolution(steps, finalTemp.toFixed(2), '°C');
+        }
+    </script>
+    
+    
+</body>
+</html>
+
+
